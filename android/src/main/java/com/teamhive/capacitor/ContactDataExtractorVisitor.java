@@ -37,4 +37,7 @@ public class ContactDataExtractorVisitor implements Visitor<Cursor> {
         } 
     }
 
-    public JSArray getPhoneNumbers() { return phoneNumbers; }
+    public JSArray getPhoneNumbers() {
+        return phoneNumbers;
+    }
+}
