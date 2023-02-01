@@ -52,7 +52,7 @@ public class ContactPicker: CAPPlugin, CNContactPickerDelegate {
         res["note"] = contact.note;
 
         // process phone numbers
-        array = [];
+        var array: [JSObject] = [];
         for phoneNumber in contact.phoneNumbers {
             var object = JSObject()
             object["type"] = CNLabeledValue<NSString>.localizedString(forLabel: phoneNumber.label ?? "")
