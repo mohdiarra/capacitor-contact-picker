@@ -51,18 +51,6 @@ public class ContactPicker: CAPPlugin, CNContactPickerDelegate {
         res["organizationName"] = contact.organizationName;
         res["note"] = contact.note;
 
-        // process email addresses
-        var array: [JSObject] = [];
-        for emailAddress in contact.emailAddresses {
-            var object = JSObject()
-            object["type"] = CNLabeledValue<NSString>.localizedString(forLabel: emailAddress.label ?? "")
-            if emailAddress.value != "" {
-                object["emailAddress"] = emailAddress.value as String
-            }
-            array.append(object)
-        }
-        res["emailAddresses"] = array
-
         // process phone numbers
         array = [];
         for phoneNumber in contact.phoneNumbers {
@@ -74,40 +62,6 @@ public class ContactPicker: CAPPlugin, CNContactPickerDelegate {
             array.append(object)
         }
         res["phoneNumbers"] = array
-
-        // process postal addresses
-        array = [];
-        for address in contact.postalAddresses {
-            var object = JSObject()
-            object["formattedAddress"] = CNPostalAddressFormatter().string(from: address.value)
-            object["type"] = CNLabeledValue<NSString>.localizedString(forLabel: address.label ?? "")
-            if address.value.street != "" {
-                object["street"] = address.value.street
-            }
-            if address.value.city != "" {
-                object["city"] = address.value.city
-            }
-            if address.value.state != "" {
-                object["state"] = address.value.state
-            }
-            if address.value.postalCode != "" {
-                object["postalCode"] = address.value.postalCode
-            }
-            if address.value.country != "" {
-                object["country"] = address.value.country
-            }
-            if address.value.isoCountryCode != "" {
-                object["isoCountryCode"] = address.value.isoCountryCode
-            }
-            if address.value.subAdministrativeArea != "" {
-                object["subAdministrativeArea"] = address.value.subAdministrativeArea
-            }
-            if address.value.subLocality != "" {
-                object["subLocality"] = address.value.subLocality
-            }
-            array.append(object)
-        }
-        res["postalAddresses"] = array
 
         // temporarily disable returning contact imageData because base64 data overwhelms console log
         /*if contact.imageData != nil {

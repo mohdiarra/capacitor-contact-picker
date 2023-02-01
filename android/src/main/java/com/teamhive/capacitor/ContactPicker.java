@@ -119,7 +119,7 @@ public class ContactPicker extends Plugin {
                         ContactDataExtractorVisitor contactDataExtractor = new ContactDataExtractorVisitor(dataProjectionMap);
                         dataVcw.accept(contactDataExtractor);
 
-                        return transformContactObject(chosenContact, contactDataExtractor.getEmailAddresses(), contactDataExtractor.getPhoneNumbers(), contactDataExtractor.getPostalAddresses());
+                        return transformContactObject(chosenContact, contactDataExtractor.getPhoneNumbers());
                     }
                 }
             }
@@ -129,7 +129,7 @@ public class ContactPicker extends Plugin {
 
     }
 
-    private JSObject transformContactObject(JSObject tempContact, JSArray emailAddresses, JSArray phoneNumbers, JSArray postalAddresses) {
+    private JSObject transformContactObject(JSObject tempContact, JSArray phoneNumbers) {
         JSObject contact = new JSObject();
         contact.put(PluginContactFields.IDENTIFIER, tempContact.getString(PluginContactFields.IDENTIFIER));
         contact.put(PluginContactFields.ANDROID_CONTACT_LOOKUP_KEY, tempContact.getString(PluginContactFields.ANDROID_CONTACT_LOOKUP_KEY));
@@ -140,9 +140,7 @@ public class ContactPicker extends Plugin {
             contact.put(PluginContactFields.GIVEN_NAME, displayName.split(" ")[0]);
             contact.put(PluginContactFields.FAMILY_NAME, displayName.split(" ")[1]);
         }
-        contact.put(PluginContactFields.EMAIL_ADDRESSES, emailAddresses);
         contact.put(PluginContactFields.PHONE_NUMBERS, phoneNumbers);
-        contact.put(PluginContactFields.POSTAL_ADDRESSES, postalAddresses);
         //contact.put(PluginContactFields.PHOTO_URI, tempContact.getString(PluginContactFields.PHOTO_URI));
         return contact;
     }

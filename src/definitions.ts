@@ -16,6 +16,4 @@ export interface Contact {
     organizationName?: string;
     note?: string;
     phoneNumbers?: any[];
-    emailAddresses?: any[]
-    postalAddresses?: any[]
 }

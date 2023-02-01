@@ -8,6 +8,8 @@
 
 This capacitor plugin allows you to use the native contact picker UI on Android or iOS for single contact selection. Both platforms will return the same payload structure, where the data exists. This project is a fork of [TeamMaestro's plugin](https://github.com/TeamMaestro/capacitor-contact-picker) made for Capacitor 2.
 
+This fork removes all email and address and only selects the phone number without the number type mapping. 
+
 ## Installation
 ```
 npm i @calvinckho/capacitor-contact-picker
@@ -52,12 +54,11 @@ try {
         "contactId":"410FE041-5C4E-48DA-B4DE-04C15EA3DBAC",
         "organizationName":"",
         "jobTitle":"",
-        "emailAddresses":[{"type":"work","emailAddress":"John-Appleseed@mac.com"}],
         "givenName":"John",
         "note":"College roommate",
-        "phoneNumbers":[{"type":"mobile","phoneNumber":"888-555-5512"},{"type":"home","phoneNumber":"888-555-1212"}],
+        "phoneNumbers":[{"phoneNumber":"888-555-5512"},{"phoneNumber":"888-555-1212"}],
         "familyName":"Appleseed",
-        "postalAddresses":[{"postalCode":"30303","street":"3494 Kuhl Avenue","formattedAddress":"3494 Kuhl Avenue\nAtlanta GA 30303\nUSA","type":"work","state":"GA","city":"Atlanta","country":"USA","isoCountryCode":"us"},{"city":"Atlanta","street":"1234 Laurel Street","formattedAddress":"1234 Laurel Street\nAtlanta GA 30303\nUSA","type":"home","state":"GA","postalCode":"30303","country":"USA","isoCountryCode":"us"}],
+        "city":"Atlanta","country":"USA","isoCountryCode":"us"},{"city":"Atlanta","street":"1234 Laurel Street","formattedAddress":"1234 Laurel Street\nAtlanta GA 30303\nUSA","type":"home","state":"GA","postalCode":"30303","country":"USA","isoCountryCode":"us"}],
         "departmentName":"",
         "nickname":""
     }*/
