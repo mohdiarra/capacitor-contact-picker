@@ -109,6 +109,8 @@ class Permissions {
                     }
                 }
             }
+        @unknown default:
+            completionHandler(false)
         }
     }
 }
